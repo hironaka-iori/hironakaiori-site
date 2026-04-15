@@ -1,165 +1,37 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hironaka Iori - me</title>
-    <style>
-        :root {
-            --bg-color: #0d1117; 
-            --text-main: #c9d1d9;
-            --text-muted: #8b949e;
-            --link-color: #58a6ff;
-            --border-color: #30363d;
-            --font-mono: 'Consolas', 'Courier New', 'PingFang SC', 'Microsoft YaHei', monospace;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: var(--font-mono);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            font-size: 14px;
-        }
-
-        a {
-            color: var(--link-color);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* --- Navigation Bar --- */
-        .navbar {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            padding: 15px 0;
-            border-bottom: 1px solid var(--text-main);
-            font-weight: bold;
-            margin-bottom: 30px;
-            background-color: #010409;
-        }
-
-        .navbar a {
-            color: var(--text-main);
-        }
-
-        .navbar a.active {
-            color: white;
-            text-shadow: 0 0 5px rgba(255,255,255,0.5);
-        }
-
-        /* --- Main Layout --- */
-        .container {
-            display: flex;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-            gap: 40px;
-        }
-
-        /* --- Left Column (Avatar & Links) --- */
-        .left-col {
-            width: 320px;
-            flex-shrink: 0;
-        }
-
-        .ascii-box {
-            white-space: pre;
-            margin-bottom: 20px;
-            color: var(--text-main);
-        }
-
-        .profile-pic-container {
-            width: 100%;
-            height: 300px;
-            background-color: #161b22;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-left: 2px solid var(--text-main);
-            border-right: 2px solid var(--text-main);
-            margin-top: -15px;
-            margin-bottom: -15px;
-            color: var(--text-muted);
-            overflow: hidden;
-        }
-
-        .profile-pic-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* --- Right Column (Info & Trees) --- */
-        .right-col {
-            flex-grow: 1;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: 100px 1fr;
-            row-gap: 8px;
-            margin-bottom: 30px;
-        }
-
-        .info-label {
-            color: var(--text-main);
-        }
-
-        .info-value {
-            color: var(--text-main);
-        }
-
-        /* --- Tree Structures --- */
-        .tree-section {
-            display: grid;
-            grid-template-columns: 100px 1fr;
-            margin-bottom: 20px;
-        }
-
-        .tree-title {
-            color: var(--text-main);
-        }
-
-        .tree-content {
-            white-space: pre;
-            color: var(--text-main);
-        }
-
-        .tag {
-            color: var(--text-muted);
-            font-style: italic;
-        }
-
-    </style>
+    <title>Hironaka Iori - About Me</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="navbar">
-        <a href="/">关于 主页</a>
-        <a href="/blog">展柜</a>
-        <a href="/me" class="active">关于我</a>
+        <a href="/"  class="active">Home</a>
+        <a href="#about">About Me</a>
+        
+        <div class="language-switcher">
+            <a href="#" data-lang="en" class="active" onclick="switchLanguage('en'); return false;">EN</a>
+            <a href="#" data-lang="ja" onclick="switchLanguage('ja'); return false;">JA</a>
+            <a href="#" data-lang="zh" onclick="switchLanguage('zh'); return false;">ZH</a>
+        </div>
     </div>
 
     <div class="container">
         
         <div class="left-col">
             <div class="ascii-box">
-|__Links________________________-__=__X__|
+|__Links_________________________________|
 |:
 | X (Twitter):
 | <a href="https://x.com/hironakaiori" target="_blank">x.com/hironakaiori</a>
 |
-| Github 主页:
-| <a href="https://github.com/hironaka-iori" target="_blank">Github@hironaka-iori</a>
+| GitHub:
+| <a href="https://github.com/hironaka-iori" target="_blank">GitHub@hironaka-iori</a>
 |
-| Bilibili 空间:
+| Bilibili:
 | <a href="https://space.bilibili.com/1071326933" target="_blank">Bilibili@1071326933</a>
 |
 | YouTube:
@@ -170,25 +42,25 @@
 
         <div class="right-col">            
             <div class="info-grid">
-                <div class="info-label">姓</div><div class="info-value">広中 (Hironaka)</div>
-                <div class="info-label">名</div><div class="info-value">依緒璃 (Iori)</div>
-                <div class="info-label">学校</div><div class="info-value">上海市世外中学 (WFLA) | The International Baccalaureate Diploma Program (IB DP)</div>
-                <div class="info-label">身份</div>
+                <div class="info-label">First Name</div><div class="info-value">Hironaka</div>
+                <div class="info-label">Last Name</div><div class="info-value">Iori</div>
+                <div class="info-label">School</div><div class="info-value">Shanghai World Foreign Language Academy (WFLA) | The International Baccalaureate Diploma Program (IB DP)</div>
+                <div class="info-label">Identity</div>
                 <div class="info-value">
-                    AI-Lab <span class="tag"># 联合创始人 & 25-26 副社长</span><br>
-                    Computerization <span class="tag"># 核心成员 & Team '25</span>
+                    AI-Lab <span class="tag"># Co-founder & Vice President '25--'26</span><br>
+                    Computerization <span class="tag"># Core Member & Team '25</span>
                 </div>
-                <div class="info-label">兴趣</div><div class="info-value">Mathematics, Computer Science</div>
-                <div class="info-label">语言</div>
+                <div class="info-label">Interests</div><div class="info-value">Mathematics, Computer Science</div>
+                <div class="info-label">Languages</div>
                 <div class="info-value">
-                    汉语 (母语)<br>
-                    英语 (第一外语) <span class="tag"># TOEFL 111 (28/30/25/28)</span><br>
-                    日语 (第二外语) <span class="tag"># 学习中</span>
+                    Chinese (Native)<br>
+                    English (First Foreign Language) <span class="tag"># TOEFL 111 (28/30/25/28)</span><br>
+                    Japanese (Second Foreign Language) <span class="tag"># Learning</span>
                 </div>
             </div>
 
             <div class="tree-section">
-                <div class="tree-title">编程语言</div>
+                <div class="tree-title">Programming</div>
                 <div class="tree-content">
 ├── PYTHON
 ├── CPP
@@ -198,7 +70,7 @@
             </div>
 
             <div class="tree-section">
-                <div class="tree-title">项目开发</div>
+                <div class="tree-title">Projects</div>
                 <div class="tree-content">
 ├── Outspire <span class="tag"># All-in-one school app</span>
 │   ├── <a href="https://github.com/Computerization/Outspire" target="_blank">Repo</a>
@@ -209,14 +81,11 @@
             </div>
 
             <div class="tree-section">
-                <div class="tree-title">游戏</div>
+                <div class="tree-title">Gaming</div>
                 <div class="tree-content">
-音游 (Rhythm Games)
 ├── Arcaea <span class="tag"># PTT 11.21</span>
 ├── Maimai (CN) <span class="tag"># Rating 08479</span>
 └── PJSEKAI / BanG Dream! <span class="tag"># JP Server</span>
-
-日常二游 (Gacha/RPGs)
 ├── Genshin Impact / Honkai: Star Rail / Wuthering Waves <span class="tag"># Asia Server</span>
 ├── Arknights: Endfield <span class="tag"># Asia Server</span>
 └── NIKKE <span class="tag"># JP Server</span></div>
@@ -225,5 +94,6 @@
         </div>
     </div>
 
+    <script src="script.js"></script>
 </body>
 </html>
