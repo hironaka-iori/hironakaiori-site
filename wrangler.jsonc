@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "hironakaiori-site",
+  "main": "src/index.ts",
   "compatibility_date": "2026-04-15",
   "observability": {
     "enabled": true
@@ -10,5 +11,24 @@
   },
   "compatibility_flags": [
     "nodejs_compat"
-  ]
+  ],
+  // Environment variables and secrets
+  "env": {
+    "production": {
+      "vars": {
+        "ENVIRONMENT": "production"
+      },
+      "secrets": {}
+    }
+  },
+  // Bindings for D1 database, KV, etc. (optional)
+  // "kv_namespaces": [
+  //   { "binding": "CACHE", "id": "your-kv-id" }
+  // ],
+  "routes": [
+  {
+    "pattern": "/api/*",
+    "zone_name": "hironakaiori.site"
+  }
+]
 }

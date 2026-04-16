@@ -63,7 +63,115 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+
+    // Fetch iPhone location
+    fetchiPhoneLocation();
 });
+
+// Fallback location coordinates (Minhang, Shanghai, China)
+const FALLBACK_LOCATION = {
+    district: 'Minhang',
+    city: 'Shanghai',
+    country: 'China',
+    latitude: 31.1163,
+    longitude: 121.4688
+};
+
+// Fetch iPhone location from backend
+async function fetchiPhoneLocation() {
+    const locationElement = document.getElementById('location-text');
+    if (!locationElement) return;
+
+    let location = null;
+    let usedFallback = false;
+
+    try {
+        const response = await fetch('/api/iphone-location');
+        if (!response.ok) throw new Error('Failed to fetch location');
+        
+        const data = await response.json();
+        
+        if (data.success && data.location) {
+            location = data.location;
+        } else {
+            throw new Error('No location data in response');
+        }
+    } catch (error) {
+        console.error('Error fetching location:', error);
+        console.log('Using fallback location');
+        location = FALLBACK_LOCATION;
+        usedFallback = true;
+    }
+
+    // Display location
+    if (location) {
+        const { district, city, country } = location;
+        let locationText = district;
+        
+        if (city && city !== district) {
+            locationText += `, ${city}`;
+        }
+        if (country) {
+            locationText += `, ${country}`;
+        }
+        
+        locationElement.innerHTML = `📍 ${locationText}`;
+    } else {
+        locationElement.innerHTML = `<span class="error">Location unavailable</span>`;
+    }
+
+    // Initialize map
+    if (location && (location.latitude || location.latitude === 0) && (location.longitude || location.longitude === 0)) {
+        initializeMap(location, usedFallback);
+    }
+}
+
+// Initialize Leaflet map
+function initializeMap(location, isFromFallback) {
+    const mapContainer = document.getElementById('location-map');
+    if (!mapContainer || typeof L === 'undefined') return;
+
+    const lat = location.latitude || FALLBACK_LOCATION.latitude;
+    const lng = location.longitude || FALLBACK_LOCATION.longitude;
+
+    // Create map
+    const map = L.map('location-map').setView([lat, lng], 12);
+
+    // Add tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 19
+    }).addTo(map);
+
+    // Add marker
+    const markerColor = isFromFallback ? 'gray' : 'blue';
+    const marker = L.circleMarker([lat, lng], {
+        radius: 8,
+        fillColor: isFromFallback ? '#888888' : '#58a6ff',
+        color: isFromFallback ? '#666666' : '#0d1117',
+        weight: 2,
+        opacity: 0.8,
+        fillOpacity: 0.7
+    }).addTo(map);
+
+    // Add popup
+    let popupText = `📍 ${location.district}`;
+    if (location.city && location.city !== location.district) {
+        popupText += `, ${location.city}`;
+    }
+    if (location.country) {
+        popupText += `, ${location.country}`;
+    }
+    if (isFromFallback) {
+        popupText += ' <br><small>(Fallback location)</small>';
+    }
+    
+    marker.bindPopup(popupText);
+    marker.openPopup();
+
+    // Fit bounds with padding
+    map.setZoom(12);
+}
 
 // Navigate to different language versions
 function switchLanguage(lang) {

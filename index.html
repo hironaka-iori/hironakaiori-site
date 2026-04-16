@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hironaka Iori - Home</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Leaflet Map Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 </head>
 <body>
 
@@ -24,17 +27,46 @@
     </div>
 
     <div class="container">
-        <div class="right-col">            
-            <div class="info-grid">
-                <div class="info-label">First Name</div><div class="info-value">Hironaka</div>
-                <div class="info-label">Last Name</div><div class="info-value">Iori</div>
-                <div class="info-label">School</div><div class="info-value">Shanghai World Foreign Language Academy (WFLA) | IB Diploma Program</div>
-                <div class="info-label">Identity</div>
-                <div class="info-value">
-                    AI-Lab <span class="tag"># Co-founder & Vice President '25-26</span><br>
-                    Computerization <span class="tag"># Core Member & Team '25</span>
+        <div class="left-col">
+            <div class="ascii-box">
+
+  ◆◆◆
+ ◆    ◆
+◆ awmc ◆
+ ◆    ◆
+  ◆◆◆
+
+  Math • Code
+   • AI •</div>
+        </div>
+
+        <div class="right-col">
+            <div class="status-section">
+                <div class="status-label">Status</div>
+                <div class="status-list" id="status-list">
+                    <div class="status-value">
+                        <span class="status-dot"></span>
+                        Working on Chemistry Internal Assessment
+                    </div>
+                    <div class="status-value">
+                        <span class="status-dot"></span>
+                        Working on Physics Extended Essay
+                    </div>
                 </div>
-                <div class="info-label">Interests</div><div class="info-value">Mathematics, Computer Science</div>
+            </div>
+
+            <div class="location-section">
+                <div class="location-label">Location</div>
+                <div class="location-value" id="location-text">
+                    <span class="loading">Loading...</span>
+                </div>
+                <div class="location-map-container">
+                    <div id="location-map"></div>
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-label">Name</div><div class="info-value">Hironaka Iori</div>
             </div>
 
             <div class="tree-section">

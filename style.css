@@ -205,6 +205,115 @@ a:focus-visible {
     font-style: italic;
 }
 
+/* --- Status Section --- */
+.status-section {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    margin-bottom: 25px;
+    align-items: center;
+}
+
+.status-label {
+    color: var(--text-main);
+    font-weight: bold;
+}
+
+.status-value {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-main);
+}
+
+.status-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.status-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #3fb950;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+/* --- Location Section --- */
+.location-section {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    margin-bottom: 25px;
+    align-items: center;
+}
+
+.location-label {
+    color: var(--text-main);
+    font-weight: bold;
+}
+
+.location-value {
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.loading {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.error {
+    color: #f85149;
+}
+
+/* --- Location Map --- */
+.location-map-container {
+    margin-top: 12px;
+    margin-left: -8px;
+    margin-right: -8px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    grid-column: 1 / -1;
+}
+
+#location-map {
+    width: 100%;
+    height: 300px;
+    background-color: #1c2128;
+}
+
+/* Leaflet map customization */
+#location-map .leaflet-control-attribution {
+    background-color: rgba(13, 17, 23, 0.9) !important;
+    color: var(--text-muted) !important;
+    font-size: 11px;
+}
+
+#location-map .leaflet-popup-content-wrapper {
+    background-color: #30363d;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+#location-map .leaflet-popup-content {
+    color: var(--text-main);
+    margin: 8px;
+}
+
+#location-map .leaflet-container {
+    font-family: var(--font-mono);
+    background-color: #1c2128;
+}
+
 /* --- Mobile Responsiveness --- */
 @media (max-width: 768px) {
     .mobile-menu-toggle {
